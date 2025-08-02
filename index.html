@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALYA STORE - LIST UNCHEK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8A2BE2;
+            --secondary: #4B0082;
+            --accent: #FF6B6B;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --text: #333333;
+            --whatsapp: #25D366;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        h1 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-weight: 300;
+            opacity: 0.9;
+            font-size: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .price-list {
+            padding: 20px;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 15px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .price-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .product-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .amount {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .price {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+            margin-top: 5px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .whatsapp-btn {
+            background-color: var(--whatsapp);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(18, 140, 126, 0.4);
+        }
+        
+        .whatsapp-btn i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial {
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            text-align: center;
+            margin: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-title {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .testimonial-title i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .testimonial-image {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 12px;
+            margin: 15px auto;
+            display: block;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 3px solid white;
+        }
+        
+        .testimonial-caption {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            color: rgba(0,0,0,0.6);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            margin-top: 10px;
+        }
+        
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
+            z-index: 100;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+        }
+        
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
+        }
+        
+        .music-control i {
+            font-size: 1.4rem;
+        }
+        
+        .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--accent);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 650px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 25px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .price-item {
+                padding: 15px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .whatsapp-btn {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .music-control {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>LIST UNCHEK GG BY:ALYA STORE</h1>
+            <div class="subtitle">SOLUSI UNCHEK/JASTEB GG IYA DI ALYA STORE SOLUSI NYA</div>
+        </div>
+        
+        <div class="price-list">
+            <div class="price-item">
+                <div class="product-info">
+                    <span class="amount">20 Unchek</span>
+                    <span class="price">Rp 2.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%2020%20Unchek%20seharga%20Rp%202.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item">
+                <div class="product-info">
+                    <span class="amount">25 Unchek</span>
+                    <span class="price">Rp 3.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%2025%20Unchek%20seharga%20Rp%203.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item">
+                <div class="product-info">
+                    <span class="amount">30 Unchek</span>
+                    <span class="price">Rp 5.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%2030%20Unchek%20seharga%20Rp%205.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item">
+                <div class="product-info">
+                    <span class="amount">40 Unchek</span>
+                    <span class="price">Rp 10.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%2040%20Unchek%20seharga%20Rp%2010.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item">
+                <div class="product-info">
+                    <span class="amount">50 Unchek</span>
+                    <span class="price">Rp 15.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%2050%20Unchek%20seharga%20Rp%2015.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item" style="border-left-color: var(--accent);">
+                <div class="product-info">
+                    <span class="amount">150 Unchek</span>
+                    <span class="price">Rp 20.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%20150%20Unchek%20seharga%20Rp%2020.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item" style="border-left-color: var(--accent);">
+                <div class="product-info">
+                    <span class="amount">200 Unchek</span>
+                    <span class="price">Rp 25.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%20200%20Unchek%20seharga%20Rp%2025.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item" style="border-left-color: var(--accent);">
+                <div class="product-info">
+                    <span class="amount">250 Unchek</span>
+                    <span class="price">Rp 30.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%20250%20Unchek%20seharga%20Rp%2030.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item" style="border-left-color: var(--accent);">
+                <div class="product-info">
+                    <span class="amount">300 Unchek</span>
+                    <span class="price">Rp 35.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%20300%20Unchek%20seharga%20Rp%2035.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item" style="border-left-color: var(--accent);">
+                <div class="product-info">
+                    <span class="amount">350 Unchek</span>
+                    <span class="price">Rp 40.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%20350%20Unchek%20seharga%20Rp%2040.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item" style="border-left-color: var(--accent);">
+                <div class="product-info">
+                    <span class="amount">400 Unchek</span>
+                    <span class="price">Rp 45.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%20400%20Unchek%20seharga%20Rp%2045.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item" style="border-left-color: var(--accent);">
+                <div class="product-info">
+                    <span class="amount">450 Unchek</span>
+                    <span class="price">Rp 50.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%20450%20Unchek%20seharga%20Rp%2050.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+            
+            <div class="price-item" style="border-left-color: var(--accent);">
+                <div class="product-info">
+                    <span class="amount">500 Unchek</span>
+                    <span class="price">Rp 55.000</span>
+                </div>
+                <a href="https://wa.me/6285920098128?text=Saya%20mau%20beli%20500%20Unchek%20seharga%20Rp%2055.000" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                </a>
+            </div>
+        </div>
+        
+        <div class="testimonial">
+            <div class="testimonial-title">
+                <i class="fas fa-check-circle"></i> Bukti Nyata Keberhasilan
+            </div>
+            <img src="https://files.catbox.moe/fvfgy8.jpg" alt="Testimoni Unchek" class="testimonial-image">
+            <div class="testimonial-caption">Salah satu dari banyak member yang berhasil mendapatkan akun FF premium akun ML premium melalui layanan Unchek kami</div>
+        </div>
+        
+        <div class="footer">
+            CARI UNCHEK GG ALYA STORE SOLUSI NYA🕊
+        </div>
+    </div>
+
+    <!-- Music Player -->
+    <button class="music-control" id="musicControl">
+        <i class="fas fa-music"></i>
+        <span class="badge" id="musicBadge">!</span>
+    </button>
+    
+    <audio id="bgMusic" loop>
+        <source src="https://files.catbox.moe/3bbg7u.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <script>
+        const musicControl = document.getElementById('musicControl');
+        const bgMusic = document.getElementById('bgMusic');
+        const musicBadge = document.getElementById('musicBadge');
+        let isPlaying = false;
+        
+        // Set volume to 40% by default
+        bgMusic.volume = 0.4;
+        
+        musicControl.addEventListener('click', function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                musicControl.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+                musicBadge.style.display = 'flex';
+            } else {
+                bgMusic.play()
+                    .then(() => {
+                        isPlaying = true;
+                        musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+                        musicControl.style.background = 'linear-gradient(135deg, #FF6B6B, #FF8E8E)';
+                        musicBadge.style.display = 'none';
+                    })
+                    .catch(error => {
+                        musicBadge.textContent = '?';
+                        console.log("Playback failed:", error);
+                    });
+            }
+        });
+        
+        // Show music badge initially
+        musicBadge.textContent = '♪';
+        
+        // Try autoplay with user gesture
+        document.addEventListener('click', function firstInteraction() {
+            const playPromise = bgMusic.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    isPlaying = true;
+                    musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+                    musicControl.style.background = 'linear-gradient(135deg, #FF6B6B, #FF8E8E)';
+                    musicBadge.style.display = 'none';
+                })
+                .catch(error => {
+                    musicBadge.textContent = '>';
+                    console.log("Autoplay prevented:", error);
+                });
+            }
+            
+            document.removeEventListener('click', firstInteraction);
+        }, { once: true });
+    </script>
+</body>
+</html>
